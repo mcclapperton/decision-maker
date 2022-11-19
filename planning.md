@@ -33,3 +33,7 @@ ERD
 ------------------------ CHOICES_TABLE ------------------------------------
 
 |||| choices_id |||| questions_ID |||| choice_text |||| borda_rank ||||
+
+
+------------------------ VOTERS_TABLE --------------------------------------
+|||| voters_id |||| poll_code |||| voter_email
