@@ -17,12 +17,13 @@ const createPoll = (poll) => {
           });
       }
 
-      const updateQuery = `UPDATE polls set adminstrativeLink = '/polls/results/${createdPoll.id}', submissionLink = '/polls/${createdPoll.id}' where id = ${createdPoll.id}`;
-      console.log(updateQuery);
-      db.query(updateQuery)
+      const administrativeLink = `/polls/results/${createdPoll.id}`;
+      const submissionLink = `/polls/${createdPoll.id}`;
+
+      const updateQuery = `UPDATE polls set administrativeLink = $1, submissionLink = $2 where id = $3;`;
+
+      db.query(updateQuery, [administrativeLink, submissionLink, createdPoll.id])
         .then(data => {
-          createdPoll.administrativeLink = '/polls/results/${createdPoll.id}';
-          createdPoll.submissionLink = '/polls/${createdPoll.id}';
           return data.rows;
         })
         .catch((err) => {
@@ -32,8 +33,8 @@ const createPoll = (poll) => {
       const result = Object.assign({}, {
         id : createdPoll.id,
 	      title: createdPoll.title,
-	      administrativeLink: createdPoll.administrativeLink,
-	      submissionLink: createdPoll.submissionLink
+	      administrativeLink,
+	      submissionLink
       });
       return result;
     }).catch((err) => {
