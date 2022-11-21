@@ -42,4 +42,14 @@ const createPoll = (poll) => {
     });
 };
 
-module.exports = { createPoll };
+const getPoll = (pollId) => {
+  return db.query(`SELECT polls.title, questions.name, questions.description
+                   FROM polls
+                   JOIN questions ON polls.id = questions.poll_id
+                   WHERE polls.id = $1;`, [pollId])
+    .then(data => {
+      return data.rows;
+    });
+}
+
+module.exports = { createPoll, getPoll };
