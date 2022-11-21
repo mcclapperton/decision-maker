@@ -4,6 +4,6 @@ CREATE TABLE polls (
   id SERIAL PRIMARY KEY NOT NULL,
   title VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
-  adminstrativeLink VARCHAR(255) NOT NULL,
-  submissionLink VARCHAR(255) NOT NULL
+  adminstrativeLink VARCHAR(255) NULL,
+  submissionLink VARCHAR(255) NULL
 );

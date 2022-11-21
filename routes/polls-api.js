@@ -1,0 +1,17 @@
+const express = require('express');
+const router  = express.Router();
+const pollQueries = require('../db/queries/polls');
+
+router.post('/create', (req, res) => {
+  pollQueries.createPoll(req.body)
+    .then(poll => {
+      res.json({ poll });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+module.exports = router;
