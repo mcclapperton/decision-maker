@@ -37,7 +37,7 @@
   </div>
 </header>
 <main>
-  <form class="options" method="post" action="/">
+  <form class="options" method="post" action="/create">
     <label for="question">Question:</label>
       <input
         class="question"
@@ -59,16 +59,17 @@
         class="optionC"
         placeholder="Enter an option"/>
     <div>
-      <button type="submit">Make a decision</button>
-    </div>
-    <div>
       <button type="button">Add option</button>
     </div>
+    <div>
+      <label for="email">Enter your email:</label>
+      <textarea name="email"></textarea>
+    </div>
+    <div>
+      <button type="submit">Make a decision</button>
+    </div>
   </form>
-  <form class="emails" method="post" action="/">
-    <label for="creator-email">Enter your email:</label>
-    <textarea name="creator-email"></textarea>
-    <h4 class="email-description">Shortly after entering your email above you'll receive a link to the poll results page as well as links to send to anyone you would like to vote.</h4>
+    <h4 class="email-description">Shortly after entering your email above you'll receive a link to the poll results page as well as links to send to anyone you would like to be able to vote.</h4>
   </form>
 </main>
 
