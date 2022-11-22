@@ -26,14 +26,15 @@ STRETCH =====>>>> See graphical representation of voting results
 
 ERD
 
------------------------- QUESTIONS_TABLE ----------------------------------
+------------------------ questions_TABLE ----------------------------------
 
-||||| question_ID ||||| creator_email ||||| question_text ||||| poll_code
+| id SERIAL PK | name VARCHAR(255) | description (TEXT) | poll_id (FK)
 
------------------------- CHOICES_TABLE ------------------------------------
+------------------------ choices_TABLE ------------------------------------
 
-|||| choices_id |||| questions_ID |||| choice_text |||| borda_rank ||||
+| id SERIAL PK | questions_id (FK) | points | user_name
 
+------------------------ polls_TABLE --------------------------------------
 
 ------------------------ VOTERS_TABLE --------------------------------------
 |||| voters_id |||| poll_code |||| voter_email

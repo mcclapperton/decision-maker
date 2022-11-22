@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS polls CASCADE;
+
+CREATE TABLE polls (
+  id SERIAL PRIMARY KEY NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  administrativeLink VARCHAR(255) NULL,
+  submissionLink VARCHAR(255) NULL
+);
