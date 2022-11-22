@@ -12,13 +12,49 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet">
+
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+
 </head>
 
 <body>
-  <h1>Have fun! 🥔</h1>
+  <nav>
+    <div class="nav">
+      <div>
+        <h2>Decision Maker</h2>
+      </div>
+    </div>
+  </nav>
+<header>
+  <div class="header">
+    <h1>Please ask a question!</h1>
+  </div>
+</header>
+<main>
+  <form method="post" action="/">
+    <label for="question">Question:</label>
+    <textarea name="enter-question"></textarea>
+    <label for="optionA">Option A:</label>
+    <textarea name="optionA"></textarea>
+    <label for="optionB">Option B:</label>
+    <textarea name="optionB"></textarea>
+    <label for="optionC">Option C:</label>
+    <textarea name="optionC"></textarea>
+    <div>
+      <button type="submit">Make a decision</button>
+    </div>
+    <div>
+      <button type="button">Add option</button>
+    </div>
+  </form>
+</main>
+
 </body>
 
 </html>
