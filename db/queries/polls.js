@@ -43,7 +43,7 @@ const createPoll = (poll) => {
 };
 
 const getPoll = (pollId) => {
-  return db.query(`SELECT polls.title, questions.name, questions.description
+  return db.query(`SELECT polls.id as poll_id, polls.title, questions.id as questions_id, questions.name, questions.description
                    FROM polls
                    JOIN questions ON polls.id = questions.poll_id
                    WHERE polls.id = $1;`, [pollId])
@@ -52,4 +52,20 @@ const getPoll = (pollId) => {
     });
 }
 
-module.exports = { createPoll, getPoll };
+const submitPoll = (poll) => {
+  let counter = 1;
+  for (let choice of poll.ranking) {
+    const points = poll.ranking.length - counter;
+    counter++;
+
+    const pollParams = [poll.username, points, choice.id];
+    db.query('INSERT INTO choices (username, points, questions_id) VALUES ($1,  $2, $3) RETURNING *;', pollParams)
+    .then(res => console.log(res.rows))
+    .catch(e => console.error(e.stack));
+  }
+  return new Promise( (resolve, reject) => {
+    resolve({});
+  });
+}
+
+module.exports = { createPoll, getPoll, submitPoll };
