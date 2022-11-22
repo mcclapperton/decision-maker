@@ -36,6 +36,12 @@ ERD
 
 ------------------------ polls_TABLE --------------------------------------
 
------------------------- VOTERS_TABLE --------------------------------------
-|||| voters_id |||| poll_code |||| voter_email
-.
+| id SERIAL PK | title VARCHAR(255) | email VARCHAR(255) | description (TEXT) | administrative-link VARCHAR(255) | submission-link VARCHAR(255)
+
+----------------------------ERD----------------------------
+![ERD](photos/erd%20.jpg)
+
+----------------------------Wireframes----------------------------
+![home](photos/home.jpg)
+![ranking](photos/ranking.jpg)
+![results](photos/results.jpg)
