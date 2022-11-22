@@ -12,13 +12,66 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet">
+
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+
 </head>
 
 <body>
-  <h1>Have fun! 🥔</h1>
+  <nav>
+    <div class="nav">
+      <div>
+        <h1>Decision Maker</h1>
+      </div>
+    </div>
+  </nav>
+<header>
+  <div class="header">
+    <h2>Please enter a question!</h2>
+  </div>
+</header>
+<main>
+  <form class="options" method="post" action="/">
+    <label for="question">Question:</label>
+      <input
+        class="question"
+        placeholder="What's your question?"/>
+    <label for="description">Description:</label>
+      <input
+        class="description"
+        placeholder="Describe your poll!"/>
+    <label for="optionA">Option A:</label>
+      <input
+        class="optionA"
+        placeholder="Enter an option"/>
+    <label for="optionB">Option B:</label>
+      <input
+        class="optionB"
+        placeholder="Enter an option"/>
+    <label for="optionB">Option C:</label>
+      <input
+        class="optionC"
+        placeholder="Enter an option"/>
+    <div>
+      <button type="submit">Make a decision</button>
+    </div>
+    <div>
+      <button type="button">Add option</button>
+    </div>
+  </form>
+  <form class="emails" method="post" action="/">
+    <label for="creator-email">Enter your email:</label>
+    <textarea name="creator-email"></textarea>
+    <h4 class="email-description">Shortly after entering your email above you'll receive a link to the poll results page as well as links to send to anyone you would like to vote.</h4>
+  </form>
+</main>
+
 </body>
 
 </html>
