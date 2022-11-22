@@ -27,27 +27,37 @@
   <nav>
     <div class="nav">
       <div>
-        <h2>Decision Maker</h2>
+        <h1>Decision Maker</h1>
       </div>
     </div>
   </nav>
 <header>
   <div class="header">
-    <h1>Please enter a question!</h1>
+    <h2>Please enter a question!</h2>
   </div>
 </header>
 <main>
   <form class="options" method="post" action="/">
     <label for="question">Question:</label>
-    <textarea name="enter-question"></textarea>
+      <input
+        class="question"
+        placeholder="What's your question?"/>
     <label for="description">Description:</label>
-    <textarea name="description"></textarea>
+      <input
+        class="description"
+        placeholder="Describe your poll!"/>
     <label for="optionA">Option A:</label>
-    <textarea name="optionA"></textarea>
+      <input
+        class="optionA"
+        placeholder="Enter an option"/>
     <label for="optionB">Option B:</label>
-    <textarea name="optionB"></textarea>
-    <label for="optionC">Option C:</label>
-    <textarea name="optionC"></textarea>
+      <input
+        class="optionB"
+        placeholder="Enter an option"/>
+    <label for="optionB">Option C:</label>
+      <input
+        class="optionC"
+        placeholder="Enter an option"/>
     <div>
       <button type="submit">Make a decision</button>
     </div>
@@ -55,12 +65,10 @@
       <button type="button">Add option</button>
     </div>
   </form>
-  <div>
-    <h3 class="email-title">Please enter your email</h3>
-  </div>
   <form class="emails" method="post" action="/">
-    <textarea name="creator-email"></textarea>
     <label for="creator-email">Enter your email:</label>
+    <textarea name="creator-email"></textarea>
+    <h4 class="email-description">Shortly after entering your email above you'll receive a link to the poll results page as well as links to send to anyone you would like to vote.</h4>
   </form>
 </main>
 
