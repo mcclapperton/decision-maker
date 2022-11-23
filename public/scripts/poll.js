@@ -34,33 +34,23 @@ const createNewOption = function () {
 };
 // append createNewOption to the bottom of form when add option clicked
 const addOption = function () {};
-// new poll-->ejs?
-
-// submit-->ejs?
 // send poll info on submit click
 const submitPoll = function (event) {
   event.preventDefault();
   console.log("createPollElement");
-  let email = $(".email").val();
+  let email = $("#email").val();
   let question = $("#question").val();
-  let description = $(".description").val();
+  let description = $("#description").val();
   const options = [];
   $(".option")
     .toArray()
     .forEach((option) => {
-      options.push($(option).val());
+      options.push({ name: $(option).val() });
     });
-  console.log(question, description, options, email);
+  console.log("submit poll:", question, description, options, email);
 
   // display something on screen (give user option to click away?)
-  createPoll(question, description, options, email)
-    .then((result) => {
-      // DO SOMETHING WITH RESULT (poll create)
-    })
-    .catch((err) => {
-      console.log(err.message);
-      // we should display error message
-    });
+  createPoll(question, description, options, email);
 };
 // question and options all filled out - send ajax post request
 const completeFields = function () {
@@ -80,18 +70,22 @@ const completeFields = function () {
 
 const createPoll = function (question, description, options, email) {
   const data = {
-    // not sure how to format the data below - with $???
-    question,
+    title: question,
     description,
     options,
     email,
   };
-  console.log(data);
-  return Promise.resolve();
+  console.log("this is data:", data);
+  // return Promise.resolve();
 
-  
-  return $.post("/api/poll/create", data).then((result) => {
-    console.log(result);
-    return result;
-  });
+  return $.post("/api/poll/create", data)
+    .done((result) => {
+      console.log("This is the result:", result);
+      document.location = "api/poll/results/" + result.poll.id;
+      return result;
+    })
+    .fail((err) => {
+      console.log(err.message);
+      // we should display error message
+    });
 };

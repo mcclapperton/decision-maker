@@ -52,6 +52,7 @@ router.post("/submit", (req, res) => {
 });
 
 router.get("/results/:pollId", (req, res) => {
+  console.log("routes:", req.params.pollId);
   pollQueries
     .getPollResults(req.params.pollId)
     .then((polls) => {
@@ -74,8 +75,9 @@ router.get("/results/:pollId", (req, res) => {
       }
 
       poll = Object.assign(poll, { options });
-
-      res.json(poll);
+      console.log("poll:", poll);
+      // res.json(poll);
+      res.render("results", poll);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
