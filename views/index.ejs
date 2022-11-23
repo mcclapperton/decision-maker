@@ -3,11 +3,12 @@
 
 <head>
   <title>Home Page</title>
-
+  <!-- Meta -->
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
+  <!-- Local CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
@@ -16,71 +17,75 @@
   <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- External CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+   <!-- Local scripts -->
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
 
 </head>
 
 <body>
-  <nav>
-    <div class="nav">
-      <div>
-        <h1>Decision Maker</h1>
-      </div>
-    </div>
+  <!-- Nav Bar -->
+  <nav class="nav-bar">
+    <h1 class="header">Make a Desicion</h1>
   </nav>
-  <div class="header">
-    <div>
+  <div class="tittle">
     <h2>Please enter a question!</h2>
    </div>
   </div>
 </head>
 <main>
-  <form class="options" method="post" action="/create">
-    <div class="question">
-      <label for="error">
-        <p class="error"></p>
-      </label>
-      <label for="question">QUESTION</label>
-      <input type="text" name="question" placeholder="What's your question?"></input>
+      <form>
+        <div class="form-group">
+          <label name="question">Ask your question</label>
+          <input class="form-control" id="question" name="question" type="text" placeholder="" autocomplete="off">
+          <p class="err" id="missing-question">Please enter the question you'd like answered</p>
+        </div>
+
+    <div class="form-group">
+      <label name="question"> Description</label>
+      <input class="form-control" id="question" name="question" type="text" placeholder="" autocomplete="off">
+      <p class="err" id="missing-question">Describe your poll!</p>
     </div>
 
-    <label for="description">DESCRIPTION:</label>
-      <input
-        class="description"
-        placeholder="Describe your poll!"/>
-        <div class="options">
-          <label for="Option">POLL OPTIONS</label>
-          <input type="text" name="options[]" placeholder="Option 1"></input>
-          <label for="Question_2"></label>
-          <input type="text" name="options[]" placeholder="Option 2"></input>
-          <input type="text" name="options[]" placeholder="Option 3"></input>
-        </div>
-        <div class="option-counter">
-          <button class="new-option" type="button">Add an Option</button>
-          <output name="counter" for="Options-number">
-          </output>
-        </div>
+    <div class="form-group">
+      <label name="option1">Enter your options</label>
+      <input class="form-control" id="option1" name="option1" type="text" placeholder="" autocomplete="off">
+    </div>
+
+    <div class="form-group">
+      <input class="form-control" id="option2" name="option2" type="text" placeholder="" autocomplete="off">
+    </div>
+
+    <div class ="add-option-div">
+      <p class="err" id="missing-option">Please fill out all of the options</p>
+      <button type="button" class="add-option btn btn-default btn-xs">Add another option</button>
+    </div>
+
     <div>
-      <button type="submit">Make a decision</button>
+      <button type="button" class="add-option btn btn-default btn-xs"> Make a decision</button>
     </div>
-    <div class="emails">
-      <label for="emails">ENTER YOUR EMAIL:</label>
-      <input type="email" name="emails[]" placeholder="Add an email"></input>
-    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">EMAIL</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+</div>
+
     <div class="email-counter">
-      <button class="new-email" type="button">Add an Email</button>
+      <button type="button" class="btn btn-outline-secondary btn-sm">Add an Email</button>
       <output name="email-count" for="Email-number">
       </output>
-    </div>
-    <div class="comment">
-      <label for="Comment">Comment</label>
-      <input type="text" name="comment" placeholder="Add a Comment (optional)"></input>
-      <button type="submit">Submit</button>
-    </div>
+      <div class="form-group">
+        <label name="question"> Comment </label>
+        <input class="form-control" id="question" name="question" type="text" placeholder="" autocomplete="off">
+        <p class="err" id="missing-question">Add a comment</p>
+        <button type="button" class="btn btn-success">Submit</button>
+      </div>
+
     </form>
   </form>
     <h4 class="email-description">Shortly after entering your email above you'll receive a link to the poll results page as well as links to send to anyone you would like to vote.</h4>
