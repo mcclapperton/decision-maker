@@ -3,11 +3,12 @@
 
 <head>
   <title>Home Page</title>
+  <!-- Meta -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-
+  <!-- Local CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
@@ -17,51 +18,57 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet">
 
+  <!-- External CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+  <!-- Local scripts -->
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
 
 </head>
 
 <body>
-  <nav>
-    <div class="nav">
-      <div>
-        <h2>Decision Maker</h2>
-      </div>
-    </div>
+  <!-- Nav Bar -->
+  <nav class="nav-bar">
+    <h1 class="header">Decision Maker</h1>
   </nav>
-<header>
-  <div class="header">
-    <h1>Results!</h1>
-  </div>
-</header>
-<main>
-<!-- templateVars(title, options, descript) -->
-<!-- poll: {
+  <header>
+    <div class="header">
+      <h1>Results!</h1>
+    </div>
+  </header>
+  <main>
+    <!-- templateVars(title, options, descript) -->
+    <!-- poll: {
   title: 'q',
   description: 'q',
   options: [ { ranking: 1, name: 'q', points: undefined } ] -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Option</th>
+          <th scope="col">Ranking</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>winningOption</td>
+          <td>winningRank</td>
+        </tr>
+        <tr>
+          <td>2nd option</td>
+          <td>2ndRank</td>
+        </tr>
+        <tr>
+          <td>3rd option</td>
+          <td>3rd rank</td>
+        </tr>
+      </tbody>
+    </table>
 
-  <table class="results-table">
-    <thead>
-      <td>Option</td>
-      <td>Ranking</td>
-    </thead>
-    <tr>
-      <td>winning option</td>
-      <td>winning option rank (1)</td>
-    </tr>
-    <tr>
-      <td>2nd option</td>
-      <td>option rank (2nd)</td>
-    </tr>
-    <tr>
-      <td>3rd option</td>
-      <td>option rank (3rd)</td>
-    </tr>
-  </table>
-</main>
+  </main>
 
 </body>
 
