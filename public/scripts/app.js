@@ -28,6 +28,20 @@ $(document).ready(function () {
   // new poll-->ejs?
 
   // submit-->ejs?
-
+  // send poll info on submit click
+  const submitCreatorPoll = function () {
+    $(".submit").on("click", function (element) {
+      let $email = $(".email").val();
+      let $question = $(".question").val();
+      let $options = $(".option").val();
+      let options = [];
+      $("option")
+        .toArray()
+        .forEach((option) => {
+          options.push($(option).val());
+        });
+    });
+  };
+  // need to think about errors(blank text fields, etc)
   // drag and drop
 });
