@@ -14,10 +14,6 @@ As a user I want the app to collate the rankings and calulate #1 choice.
 
 As a user I want to see the final outcome.
 
-
-
-
-
 User Scenario
 
 As a user I will begin by entering my email, so I can get the results.
@@ -56,20 +52,36 @@ ERD
 
 ------------------------ polls_TABLE --------------------------------------
 
+<<<<<<< HEAD
 ------------------------ VOTERS_TABLE --------------------------------------
 |||| voters_id |||| poll_code |||| voter_email
 
+## <<<<<<< HEAD
 
 ------------
 
 ### APIs
 
+| URLs (routes)              | Description                     |
+| -------------------------- | ------------------------------- |
+| POST /api/poll/create      | Create a new poll               |
+| GET /api/poll/page/:pollId | To load the poll data           |
+| POST /api/poll/submit      | Submit a new answer to the poll |
+| GET /api/poll/results/:id  | Show the results of the poll    |
 
-| URLs (routes) | Description |
-| ------------ | ------------ |
-| POST /api/poll/create   | Create a new poll  |
-| GET /api/poll/page/:pollId   |  To load the poll data |
-| POST /api/poll/submit   | Submit a new answer to the poll  |
-| GET /api/poll/results/:id  | Show the results of the poll  |
+# API documentation: https://docs.google.com/document/d/10BrIKxiGCzHsjmvqvrlRirctjwLpTrWqIl5haMps_8Q/edit?usp=sharing
 
+> > > > > > > # rita_styles
+> > > > > > >
+> > > > > > > | id SERIAL PK | title VARCHAR(255) | email VARCHAR(255) | description (TEXT) | administrative-link VARCHAR(255) | submission-link VARCHAR(255)
+
+----------------------------ERD----------------------------
+![ERD](photos/erd%20.jpg)
+
+----------------------------Wireframes----------------------------
+![home](photos/home.jpg)
+![ranking](photos/ranking.jpg)
+![results](photos/results.jpg)
+
+> > > > > > > feature/results-page
 API documentation: https://docs.google.com/document/d/10BrIKxiGCzHsjmvqvrlRirctjwLpTrWqIl5haMps_8Q/edit?usp=sharing
