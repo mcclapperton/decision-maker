@@ -1,3 +1,23 @@
+User Stories
+
+As a user I want to make a straw poll , because I want a group decision.
+
+As a user I want to send this poll to my friends and myself.
+
+As a user I want to be able to be able to edit and delete my poll.
+
+As a user I want to post a number of choices for the poll question.
+
+As a user I want my friends to rank those choices individually and cast vote.
+
+As a user I want the app to collate the rankings and calulate #1 choice.
+
+As a user I want to see the final outcome.
+
+
+
+
+
 User Scenario
 
 As a user I will begin by entering my email, so I can get the results.
