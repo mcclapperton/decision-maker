@@ -68,4 +68,16 @@ const submitPoll = (poll) => {
   });
 }
 
-module.exports = { createPoll, getPoll, submitPoll };
+const getPollResults = (pollId) => {
+  return db.query(`SELECT polls.title, questions.name, questions.description, sum(choices.points) as total_points FROM polls
+  JOIN questions on polls.id = questions.poll_id
+  JOIN choices on questions.id = choices.questions_id
+  WHERE polls.id = $1
+  GROUP BY polls.title, questions.name, questions.description
+  ORDER BY total_points DESC;`, [pollId])
+    .then(data => {
+      return data.rows;
+    });
+}
+
+module.exports = { createPoll, getPoll, submitPoll, getPollResults };

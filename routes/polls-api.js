@@ -14,7 +14,7 @@ router.post('/create', (req, res) => {
     });
 });
 
-router.get('/:pollId', (req, res) => {
+router.get('/page/:pollId', (req, res) => {
   pollQueries.getPoll(req.params.pollId)
     .then(polls => {
       let poll = Object.assign({}, {id: polls[0].poll_id, title: polls[0].title});
@@ -26,7 +26,7 @@ router.get('/:pollId', (req, res) => {
 
       poll = Object.assign(poll, { questions });
 
-      res.json({ poll });
+      res.json(poll);
     })
     .catch(err => {
       res
@@ -38,7 +38,30 @@ router.get('/:pollId', (req, res) => {
 router.post('/submit', (req, res) => {
   pollQueries.submitPoll(req.body)
     .then(choices => {
-      res.json({message: "You answer was submitted successfully."});
+      res.json({message: "Your answer had been submitted successfully."});
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+router.get('/results/:pollId', (req, res) => {
+  pollQueries.getPollResults(req.params.pollId)
+    .then(polls => {
+      let poll = Object.assign({}, {title: polls[0].title});
+      let questions = [];
+      let counter = 1;
+
+      for (let p of polls) {
+        questions.push({ranking: counter, name: p.name, points: p.total_points});
+        counter++;
+      }
+
+      poll = Object.assign(poll, { questions });
+
+      res.json(poll);
     })
     .catch(err => {
       res
