@@ -41,8 +41,12 @@
   </header>
   <main>
     <blockquote class="blockquote">
-      <p class="mb-0"><%= title %></p>
-      <footer class="blockquote-footer"><%= description %></footer>
+      <p class="mb-0">
+        <%= title %>
+      </p>
+      <footer class="blockquote-footer">
+        <%= description %>
+      </footer>
     </blockquote>
     <table class="table">
       <thead>
@@ -54,22 +58,14 @@
       <tbody>
         <% for(let option of options) { %>
           <tr id="<%= option.name %>">
-            <td ><%= option.name %></td>
-            <td><%= option.ranking %></td>
+            <td>
+              <%= option.name %>
+            </td>
+            <td>
+              <%= option.ranking %>
+            </td>
           </tr>
-         <% } %>
-        <!-- <tr>
-          <td>winningOption</td>
-          <td>winningRank</td>
-        </tr>
-        <tr>
-          <td>2nd option</td>
-          <td>2ndRank</td>
-        </tr>
-        <tr>
-          <td>3rd option</td>
-          <td>3rd rank</td>
-        </tr> -->
+          <% } %>
       </tbody>
     </table>
 
