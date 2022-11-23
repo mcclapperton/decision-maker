@@ -60,7 +60,6 @@ ERD
 |||| voters_id |||| poll_code |||| voter_email
 
 
-<<<<<<< HEAD
 ------------
 
 ### APIs
@@ -74,7 +73,3 @@ ERD
 | GET /api/poll/results/:id  | Show the results of the poll  |
 
 API documentation: https://docs.google.com/document/d/10BrIKxiGCzHsjmvqvrlRirctjwLpTrWqIl5haMps_8Q/edit?usp=sharing
-=======
-
-
->>>>>>> rita_styles
