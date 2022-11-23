@@ -28,6 +28,7 @@ $(document).ready(function () {
   // new poll-->ejs?
 
   // submit-->ejs?
+
   // send poll info on submit click
   const submitCreatorPoll = function () {
     $(".submit").on("click", function (element) {
@@ -42,6 +43,28 @@ $(document).ready(function () {
         });
     });
   };
+  // question and options all filled out - send ajax post request
+  if ($options && $question) {
+    $.ajax({
+      url: "/submit",
+      type: "POST",
+      data: {
+        // not sure how to format the data below - with $???
+        question,
+        options,
+        email,
+      },
+      success: function (result) {
+        // handle data??
+      },
+      error: function (result, statut, error) {
+        // handle errors
+      },
+    });
+  }
   // need to think about errors(blank text fields, etc)
   // drag and drop
+  createNewOption();
+  addOption();
+  submitCreatorPoll();
 });
