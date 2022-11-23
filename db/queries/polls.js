@@ -2,14 +2,14 @@ const defaults = require('pg/lib/defaults');
 const db = require('../connection');
 
 const createPoll = (poll) => {
-  const pollParams = [poll.title, poll.email];
-  return db.query('INSERT INTO polls (title, email) VALUES ($1, $2) RETURNING *;', pollParams)
+  const pollParams = [poll.title, poll.description, poll.email];
+  return db.query('INSERT INTO polls (title, description, email) VALUES ($1, $2, $3) RETURNING *;', pollParams)
     .then(data => {
       const createdPoll = data.rows[0];
 
-      for (let question of poll.questions) {
-        const questionParams = [question.name, question.description, createdPoll.id];
-        db.query('INSERT INTO questions (name, description, poll_id) VALUES ($1, $2, $3);', questionParams)
+      for (let option of poll.options) {
+        const optionParams = [option.name, createdPoll.id];
+        db.query('INSERT INTO options (name, poll_id) VALUES ($1, $2);', optionParams)
           .then(data => {
           })
           .catch((err) => {
@@ -18,7 +18,7 @@ const createPoll = (poll) => {
       }
 
       const administrativeLink = `/polls/results/${createdPoll.id}`;
-      const submissionLink = `/polls/${createdPoll.id}`;
+      const submissionLink = `/polls/page/${createdPoll.id}`;
 
       const updateQuery = `UPDATE polls set administrativeLink = $1, submissionLink = $2 where id = $3;`;
 
@@ -33,6 +33,7 @@ const createPoll = (poll) => {
       const result = Object.assign({}, {
         id : createdPoll.id,
 	      title: createdPoll.title,
+        description: createdPoll.description,
 	      administrativeLink,
 	      submissionLink
       });
@@ -43,9 +44,9 @@ const createPoll = (poll) => {
 };
 
 const getPoll = (pollId) => {
-  return db.query(`SELECT polls.id as poll_id, polls.title, questions.id as questions_id, questions.name, questions.description
+  return db.query(`SELECT polls.id as poll_id, polls.title, polls.description, options.id as options_id, options.name
                    FROM polls
-                   JOIN questions ON polls.id = questions.poll_id
+                   JOIN options ON polls.id = options.poll_id
                    WHERE polls.id = $1;`, [pollId])
     .then(data => {
       return data.rows;
@@ -59,7 +60,7 @@ const submitPoll = (poll) => {
     counter++;
 
     const pollParams = [poll.username, points, choice.id];
-    db.query('INSERT INTO choices (username, points, questions_id) VALUES ($1,  $2, $3) RETURNING *;', pollParams)
+    db.query('INSERT INTO answers (username, points, options_id) VALUES ($1,  $2, $3) RETURNING *;', pollParams)
     .then(res => console.log(res.rows))
     .catch(e => console.error(e.stack));
   }
@@ -68,4 +69,16 @@ const submitPoll = (poll) => {
   });
 }
 
-module.exports = { createPoll, getPoll, submitPoll };
+const getPollResults = (pollId) => {
+  return db.query(`SELECT polls.title, polls.description, options.name, sum(answers.points) as total_points FROM polls
+  JOIN options on polls.id = options.poll_id
+  JOIN answers on options.id = answers.options_id
+  WHERE polls.id = $1
+  GROUP BY polls.title, polls.description, options.name
+  ORDER BY total_points DESC;`, [pollId])
+    .then(data => {
+      return data.rows;
+    });
+}
+
+module.exports = { createPoll, getPoll, submitPoll, getPollResults };

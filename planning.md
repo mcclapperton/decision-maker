@@ -39,3 +39,17 @@ ERD
 ------------------------ VOTERS_TABLE --------------------------------------
 |||| voters_id |||| poll_code |||| voter_email
 .
+
+------------
+
+### APIs
+
+
+| URLs (routes) | Description |
+| ------------ | ------------ |
+| POST /api/poll/create   | Create a new poll  |
+| GET /api/poll/page/:pollId   |  To load the poll data |
+| POST /api/poll/submit   | Submit a new answer to the poll  |
+|  GET /api/poll/results/:id  | Show the results of the poll  |
+
+API documentation: https://docs.google.com/document/d/10BrIKxiGCzHsjmvqvrlRirctjwLpTrWqIl5haMps_8Q/edit?usp=sharing
