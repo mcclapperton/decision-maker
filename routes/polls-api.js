@@ -17,11 +17,11 @@ router.post('/create', (req, res) => {
 router.get('/page/:pollId', (req, res) => {
   pollQueries.getPoll(req.params.pollId)
     .then(polls => {
-      let poll = Object.assign({}, {id: polls[0].poll_id, title: polls[0].title});
+      let poll = Object.assign({}, {id: polls[0].poll_id, title: polls[0].title, description: polls[0].description});
       let options = [];
 
       for (let p of polls) {
-        options.push({id: p.options_id, name: p.name, description: p.description});
+        options.push({id: p.options_id, name: p.name});
       }
 
       poll = Object.assign(poll, { options });
@@ -38,7 +38,7 @@ router.get('/page/:pollId', (req, res) => {
 router.post('/submit', (req, res) => {
   pollQueries.submitPoll(req.body)
     .then(answers => {
-      res.json({message: "Your answer had been submitted successfully."});
+      res.json({message: "Your answer has been submitted successfully."});
     })
     .catch(err => {
       res
@@ -50,7 +50,9 @@ router.post('/submit', (req, res) => {
 router.get('/results/:pollId', (req, res) => {
   pollQueries.getPollResults(req.params.pollId)
     .then(polls => {
-      let poll = Object.assign({}, {title: polls[0].title});
+      console.log(polls);
+      let poll = Object.assign({}, {title: polls[0].title, description: polls[0].description});
+
       let options = [];
       let counter = 1;
 
