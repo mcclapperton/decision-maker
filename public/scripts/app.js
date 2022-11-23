@@ -34,6 +34,7 @@ $(document).ready(function () {
     $(".submit").on("click", function (element) {
       let $email = $(".email").val();
       let $question = $(".question").val();
+      let $description = $(".description").val();
       let $options = $(".option").val();
       let options = [];
       $("option")
@@ -51,11 +52,12 @@ $(document).ready(function () {
       data: {
         // not sure how to format the data below - with $???
         question,
+        description,
         options,
         email,
       },
       success: function (result) {
-        // handle data??
+        console.log("new poll posted");
       },
       error: function (result, statut, error) {
         // handle errors
