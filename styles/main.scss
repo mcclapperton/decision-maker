@@ -1,9 +1,12 @@
 @import 'variables';
 
-main {
+.main {
   display: $display;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: $secondary-colour;
+  background: yellow(241, 241, 241);
+  margin: 20px;
 }
+
+

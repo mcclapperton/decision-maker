@@ -11,12 +11,13 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/header.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
@@ -31,43 +32,57 @@
       </div>
     </div>
   </nav>
-<header>
   <div class="header">
+    <div>
     <h2>Please enter a question!</h2>
+   </div>
   </div>
-</header>
+</head>
 <main>
-  <form class="options" method="post" action="/">
-    <label for="question">Question:</label>
-      <input
-        class="question"
-        placeholder="What's your question?"/>
-    <label for="description">Description:</label>
+  <form class="options" method="post" action="/create">
+    <div class="question">
+      <label for="error">
+        <p class="error"></p>
+      </label>
+      <label for="question">QUESTION</label>
+      <input type="text" name="question" placeholder="What's your question?"></input>
+    </div>
+
+    <label for="description">DESCRIPTION:</label>
       <input
         class="description"
         placeholder="Describe your poll!"/>
-    <label for="optionA">Option A:</label>
-      <input
-        class="optionA"
-        placeholder="Enter an option"/>
-    <label for="optionB">Option B:</label>
-      <input
-        class="optionB"
-        placeholder="Enter an option"/>
-    <label for="optionB">Option C:</label>
-      <input
-        class="optionC"
-        placeholder="Enter an option"/>
+        <div class="options">
+          <label for="Option">POLL OPTIONS</label>
+          <input type="text" name="options[]" placeholder="Option 1"></input>
+          <label for="Question_2"></label>
+          <input type="text" name="options[]" placeholder="Option 2"></input>
+          <input type="text" name="options[]" placeholder="Option 3"></input>
+        </div>
+        <div class="option-counter">
+          <button class="new-option" type="button">Add an Option</button>
+          <output name="counter" for="Options-number">
+          </output>
+        </div>
     <div>
       <button type="submit">Make a decision</button>
     </div>
-    <div>
-      <button type="button">Add option</button>
+    <div class="emails">
+      <label for="emails">ENTER YOUR EMAIL:</label>
+      <input type="email" name="emails[]" placeholder="Add an email"></input>
     </div>
+    <div class="email-counter">
+      <button class="new-email" type="button">Add an Email</button>
+      <output name="email-count" for="Email-number">
+      </output>
+    </div>
+    <div class="comment">
+      <label for="Comment">Comment</label>
+      <input type="text" name="comment" placeholder="Add a Comment (optional)"></input>
+      <button type="submit">Submit</button>
+    </div>
+    </form>
   </form>
-  <form class="emails" method="post" action="/">
-    <label for="creator-email">Enter your email:</label>
-    <textarea name="creator-email"></textarea>
     <h4 class="email-description">Shortly after entering your email above you'll receive a link to the poll results page as well as links to send to anyone you would like to vote.</h4>
   </form>
 </main>
