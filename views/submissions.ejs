@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Show Poll</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -22,16 +22,34 @@
   <script defer src="/scripts/app.js"></script>
 
 </head>
-
-<body>
-  <nav>
-    <div class="nav">
-      <div>
-        <h2>Decision Maker</h2>
-      </div>
-    </div>
-  </nav>
 <header>
+  <nav>
+    <span class="span">Decision Maker</span>
+  </nav>
+</header>
+<body>
+  <form class="form-inline" action="/vote/new" method="POST" id="pollForm">
+    <input type="hidden" name="pollId" value="<%= pollId %>">
+    <div class="container">
+      <h2><%= question %></h2>
+      <ul id="<%=pollId%>">
+        <% for(let choice of choices) { %>
+          <li>
+            <input class="vote" type="radio" id="<%= choice %>" name="selector">
+            <label for="<%= choice %>" ><%= choice %></label>
+            <div class="check"><div class="inside"></div></div>
+            <output name="rank" for="<%= choice %>"></output>
+          </li>
+          <% } %>
+        </ul>
+        <div>
+          <button class="vote_button" type="submit">VOTE</button>
+        </div>
+      </div>
+    </form>
+  </body>
+ </html>
+<!-- <header>
   <div class="header">
     <h1>Please rank your options!</h1>
   </div>
@@ -47,4 +65,4 @@
 
 </body>
 
-</html>
+</html> -->
