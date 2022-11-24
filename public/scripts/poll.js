@@ -81,8 +81,8 @@ const createPoll = function (question, description, options, email) {
       Admin Link: <a href="http://localhost:8080/api/poll/results/${result.poll.id}" class="alert-link">
       /api/poll/results/${result.poll.id}
       </a>
-      Voter Link:<a href="http://localhost:8080/api/poll/${result.poll.id}" class="alert-link">
-      /api/poll/${result.poll.id}
+      Voter Link:<a href="http://localhost:8080/api/poll/page/${result.poll.id}" class="alert-link">
+      /api/poll/page/${result.poll.id}
       </a>
     </div>
   </div>`);

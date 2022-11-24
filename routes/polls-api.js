@@ -32,8 +32,10 @@ router.get("/page/:pollId", (req, res) => {
       }
 
       poll = Object.assign(poll, { options });
+      console.log(poll);
+      // res.json(poll);
 
-      res.json(poll);
+      res.render("submissions", poll);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
