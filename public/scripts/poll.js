@@ -78,10 +78,10 @@ const createPoll = function (question, description, options, email) {
     <h5>Poll Created!</h5>
     <h6>Here are your urls:</h6>
     <div class="alert alert-success" role="alert">
-      Admin Link: <a href="http://localhost:8080/api/poll/results/${result.poll.id}" class="alert-link">
+      Admin Link: <a href="/api/poll/results/${result.poll.id}" class="alert-link">
       /api/poll/results/${result.poll.id}
       </a>
-      Voter Link:<a href="http://localhost:8080/api/poll/page/${result.poll.id}" class="alert-link">
+      Voter Link:<a href="/api/poll/page/${result.poll.id}" class="alert-link">
       /api/poll/page/${result.poll.id}
       </a>
     </div>
