@@ -7,9 +7,8 @@ $(() => {
     $("create-poll-form").append(createNewOption());
   });
 
-  // need to think about errors(blank text fields, etc)
-  createNewOption();
-  addOption();
+  // createNewOption();
+  // addOption();
   console.log("READY COMPLETE");
 });
 // Preventing XSS with Escaping
@@ -33,7 +32,7 @@ const addOption = function () {};
 // send poll info on submit click
 const submitPoll = function (event) {
   event.preventDefault();
-  console.log("createPollElement");
+  console.log("submitPoll");
   let email = $("#email").val();
   let question = $("#question").val();
   let description = $("#description").val();
@@ -82,7 +81,7 @@ const createPoll = function (question, description, options, email) {
       Admin Link: <a href="http://localhost:8080/api/poll/results/${result.poll.id}" class="alert-link">
       /api/poll/results/${result.poll.id}
       </a>
-      Submission Link:<a href="http://localhost:8080/api/poll/${result.poll.id}" class="alert-link">
+      Voter Link:<a href="http://localhost:8080/api/poll/${result.poll.id}" class="alert-link">
       /api/poll/${result.poll.id}
       </a>
     </div>
