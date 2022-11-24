@@ -3,7 +3,7 @@ $(() => {
   console.log("READY!");
   $("#poll-form").on("submit", submitPoll);
 
-  $(".add-option").on("click", function (element) {
+  $(".add-option").on("click", function () {
     $("create-poll-form").append(createNewOption());
   });
 
@@ -22,13 +22,9 @@ const escape = function (str) {
 // add new option
 const createNewOption = function () {
   const $option = $(`
-  <div class="new-option">
-  <label for="option">Option:</label>
-    <input
-      type="text"
-      class="optionN"
-      placeholder="Enter an option"/>
-      </div>
+  <div class="form-group">
+          <input class="form-control option" type="text" />
+        </div>
       `);
   return $option;
 };
@@ -54,17 +50,13 @@ const submitPoll = function (event) {
 };
 // question and options all filled out - send ajax post request
 const completeFields = function () {
-  let $email = $(".email").val();
-  let $question = $(".question").val();
-  let $description = $(".description").val();
-  let $options = $(".option").val();
   if (
     $email === "" ||
     $question === "" ||
     $description === "" ||
     $options === ""
   ) {
-    // message to fill all fields
+    // add alert to make sure to fill all fields
   }
 };
 
@@ -81,7 +73,14 @@ const createPoll = function (question, description, options, email) {
   return $.post("/api/poll/create", data)
     .done((result) => {
       console.log("This is the result:", result);
-      document.location = "api/poll/results/" + result.poll.id;
+      // document.location = "api/poll/results/" + result.poll.id;
+      $("body").append(`
+      <div class ="show-urls">
+      <h5>Poll Created!</h5>
+      <h6>Here are your urls:<h6>
+      <span>Admin Link: api/poll/results/<%= result.poll.id %></span>
+      <span>Voter/Submissions Link: SUBMISSION LINK </span>
+      `);
       return result;
     })
     .fail((err) => {

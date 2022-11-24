@@ -52,13 +52,7 @@ ERD
 
 ------------------------ polls_TABLE --------------------------------------
 
-<<<<<<< HEAD
------------------------- VOTERS_TABLE --------------------------------------
-|||| voters_id |||| poll_code |||| voter_email
 
-## <<<<<<< HEAD
-
-------------
 
 ### APIs
 
@@ -71,9 +65,7 @@ ERD
 
 # API documentation: https://docs.google.com/document/d/10BrIKxiGCzHsjmvqvrlRirctjwLpTrWqIl5haMps_8Q/edit?usp=sharing
 
-> > > > > > > # rita_styles
-> > > > > > >
-> > > > > > > | id SERIAL PK | title VARCHAR(255) | email VARCHAR(255) | description (TEXT) | administrative-link VARCHAR(255) | submission-link VARCHAR(255)
+| id SERIAL PK | title VARCHAR(255) | email VARCHAR(255) | description (TEXT) | administrative-link VARCHAR(255) | submission-link VARCHAR(255)
 
 ----------------------------ERD----------------------------
 ![ERD](photos/erd%20.jpg)
@@ -84,4 +76,4 @@ ERD
 ![results](photos/results.jpg)
 
 > > > > > > > feature/results-page
-API documentation: https://docs.google.com/document/d/10BrIKxiGCzHsjmvqvrlRirctjwLpTrWqIl5haMps_8Q/edit?usp=sharing
+> > > > > > > API documentation: https://docs.google.com/document/d/10BrIKxiGCzHsjmvqvrlRirctjwLpTrWqIl5haMps_8Q/edit?usp=sharing
