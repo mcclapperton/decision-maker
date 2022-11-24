@@ -71,6 +71,7 @@ const createPoll = function (question, description, options, email) {
 
   return $.post("/api/poll/create", data)
     .done((result) => {
+      // if response empty 
       console.log("This is the result:", result);
       // document.location = "api/poll/results/" + result.poll.id;
       $("body").append(`
