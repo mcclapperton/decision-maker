@@ -1,5 +1,6 @@
 const defaults = require('pg/lib/defaults');
 const db = require('../connection');
+const emailSender = require('../../utils/emailSender');
 
 const createPoll = (poll) => {
   const pollParams = [poll.title, poll.description, poll.email];
@@ -17,8 +18,8 @@ const createPoll = (poll) => {
           });
       }
 
-      const administrativeLink = `/polls/results/${createdPoll.id}`;
-      const submissionLink = `/polls/page/${createdPoll.id}`;
+      const administrativeLink = `/api/poll/results/${createdPoll.id}`;
+      const submissionLink = `/api/poll/page/${createdPoll.id}`;
 
       const updateQuery = `UPDATE polls set administrativeLink = $1, submissionLink = $2 where id = $3;`;
 
@@ -31,12 +32,14 @@ const createPoll = (poll) => {
         });
 
       const result = Object.assign({}, {
-        id : createdPoll.id,
-	      title: createdPoll.title,
+        id: createdPoll.id,
+        title: createdPoll.title,
         description: createdPoll.description,
-	      administrativeLink,
-	      submissionLink
+        administrativeLink,
+        submissionLink
       });
+
+      emailSender.sendEmail(poll.email, 'Decision Maker App', `Congrats! You just created a poll with the question: ${createdPoll.title}. Here there is the administrative link : http://localhost:8080${administrativeLink} and the submission link to share with your friends: http://localhost:8080${submissionLink}.`);
       return result;
     }).catch((err) => {
       console.log(err.message);
@@ -61,10 +64,16 @@ const submitPoll = (poll) => {
 
     const pollParams = [poll.username, points, choice.id];
     db.query('INSERT INTO answers (username, points, options_id) VALUES ($1,  $2, $3) RETURNING *;', pollParams)
-    .then(res => console.log(res.rows))
-    .catch(e => console.error(e.stack));
+      .then(res => console.log(res.rows))
+      .catch(e => console.error(e.stack));
   }
-  return new Promise( (resolve, reject) => {
+  db.query('SELECT title, email, administrativelink from polls where id = $1;', [poll.id])
+      .then(res => {
+        emailSender.sendEmail(res.rows[0].email, 'Decision Maker App', `The user ${poll.username} just submitted an answer to your poll "${res.rows[0].title}". Check the results here: http://localhost:8080${res.rows[0].administrativelink}`)
+      })
+      .catch(e => console.error(e.stack));
+
+  return new Promise((resolve, reject) => {
     resolve({});
   });
 }
