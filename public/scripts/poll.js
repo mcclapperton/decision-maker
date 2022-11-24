@@ -91,6 +91,6 @@ const createPoll = function (question, description, options, email) {
     })
     .fail((err) => {
       console.log(err.message);
-      // we should display error message
+      alert("Error:", err.message);
     });
 };
