@@ -26,19 +26,28 @@
 
   <!-- Local scripts -->
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/votes.js"></script>
 
 </head>
+<nav class="nav-bar">
+  <h1 class="header">Decision Maker</h1>
+</nav>
 <header>
-  <nav>
-    <span class="span">Decision Maker</span>
-  </nav>
+  <div class="header">
+    <h1>Vote!</h1>
+  </div>
 </header>
+
 <body>
   <form class="form-inline" action="/vote/new" method="POST" id="pollForm">
     <input type="hidden" name="pollId" value="<%= pollId %>">
     <div class="container">
-      <h2><%= question %></h2>
+      <h2>
+        <%= question %>
+      </h2>
+      <h3>
+        <%= description %>
+      </h3>
       <ul id="<%=pollId%>">
         <% for(let option of options) { %>
           <li>
@@ -48,45 +57,12 @@
             <output name="rank" for="<%= option %>"></output>
           </li>
           <% } %>
-        </ul>
-        <div>
-          <button class="vote_button" type="submit">VOTE</button>
-        </div>
+      </ul>
+      <div>
+        <button class="vote_button" type="submit">VOTE</button>
       </div>
-    </form>
-  </body>
- </html>
-<!-- <header>
-  <div class="header">
-    <h1>Please rank your options!</h1>
-  </div>
-  <h2>Please rank the following options from 3 (highest) to 1 (lowest)</h2>
-</header>
-<main>
-  <form method="post" action="/">
-    <section class ="rank-options">
-      <label for="option-1">Option 1:</label>
-      <input
-        class="option-1"
-        type="number"
-        placeholder="rank"/>
-        <label for="option-2">Option 2:</label>
-      <input
-        class="option-2"
-        type="number"
-        placeholder="rank"/>
-        <label for="option-3">Option 3:</label>
-      <input
-        class="option-3"
-        type="number"
-        placeholder="rank"/>
-    </section>
-    <div>
-      <button type="submit">Submit!</button>
     </div>
   </form>
-</main>
-
 </body>
 
-</html> -->
+</html>
