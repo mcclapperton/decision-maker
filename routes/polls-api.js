@@ -73,7 +73,6 @@ router.get("/results/:pollId", (req, res) => {
         });
         counter++;
       }
-
       poll = Object.assign(poll, { options });
       console.log("poll:", poll);
       // res.json(poll);

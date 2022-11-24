@@ -40,11 +40,10 @@
     </div>
   </header>
   <main>
-    <!-- templateVars(title, options, descript) -->
-    <!-- poll: {
-  title: 'q',
-  description: 'q',
-  options: [ { ranking: 1, name: 'q', points: undefined } ] -->
+    <blockquote class="blockquote">
+      <p class="mb-0"><%= title %></p>
+      <footer class="blockquote-footer"><%= description %></footer>
+    </blockquote>
     <table class="table">
       <thead>
         <tr>
@@ -53,7 +52,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <% for(let option of options) { %>
+          <tr id="<%= option.name %>">
+            <td ><%= option.name %></td>
+            <td><%= option.ranking %></td>
+          </tr>
+         <% } %>
+        <!-- <tr>
           <td>winningOption</td>
           <td>winningRank</td>
         </tr>
@@ -64,7 +69,7 @@
         <tr>
           <td>3rd option</td>
           <td>3rd rank</td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>
 
