@@ -75,12 +75,18 @@ const createPoll = function (question, description, options, email) {
       console.log("This is the result:", result);
       // document.location = "api/poll/results/" + result.poll.id;
       $("body").append(`
-      <div class ="show-urls">
-      <h5>Poll Created!</h5>
-      <h6>Here are your urls:<h6>
-      <span>Admin Link: api/poll/results/<%= result.poll.id %></span>
-      <span>Voter/Submissions Link: SUBMISSION LINK </span>
-      `);
+      <div class="show-urls">
+    <h5>Poll Created!</h5>
+    <h6>Here are your urls:</h6>
+    <div class="alert alert-success" role="alert">
+      Admin Link: <a href="http://localhost:8080/api/poll/results/${result.poll.id}" class="alert-link">
+      /api/poll/results/${result.poll.id}
+      </a>
+      Submission Link:<a href="http://localhost:8080/api/poll/${result.poll.id}" class="alert-link">
+      /api/poll/${result.poll.id}
+      </a>
+    </div>
+  </div>`);
       return result;
     })
     .fail((err) => {
