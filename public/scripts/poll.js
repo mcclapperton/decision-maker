@@ -4,7 +4,12 @@ $(() => {
   $("#poll-form").on("submit", submitPoll);
 
   $(".add-option").on("click", function () {
-    $("create-poll-form").append(createNewOption());
+    //$("create-poll-form").append(createNewOption());
+    createNewOption().insertBefore(".add-option-div");
+  });
+
+  $(".create-poll-form").on("click", ".remove_option", function () {
+    $(this).closest('div').remove();
   });
 
   // createNewOption();
@@ -23,6 +28,7 @@ const createNewOption = function () {
   const $option = $(`
   <div class="form-group">
           <input class="form-control option" type="text" />
+          <button type="button" id="remove_option" class="remove_option btn">Remove option</button>
         </div>
       `);
   return $option;
