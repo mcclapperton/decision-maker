@@ -33,12 +33,12 @@ const containers = document.querySelectorAll(".container");
 
 draggables.forEach((draggable) => {
   draggable.addEventListener("dragstart", () => {
-    console.log("dragstart");
+    // console.log("dragstart");
     // adds opacity when dragging
     draggable.classList.add("dragging");
   });
   draggable.addEventListener("dragend", () => {
-    console.log("dragend");
+    // console.log("dragend");
     // removes opacity when dropped
     draggable.classList.remove("dragging");
   });
@@ -51,7 +51,7 @@ containers.forEach((container) => {
     // enable dropping element
     event.preventDefault();
     const afterElement = getDragAfterElement(container, event.clientY);
-    console.log(afterElement);
+    // console.log(afterElement);
     const draggable = document.querySelector(".dragging");
     // const draggable = document.querySelectorAll(".dragging");
     if (afterElement == null) {
