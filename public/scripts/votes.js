@@ -80,7 +80,10 @@ const voteInPoll = function (event) {
   $(".draggable")
     .toArray()
     .forEach((draggable) => {
-      ranking.push({ id: $(draggable).attr("data-id"), name: $(draggable).attr("data-name")});
+      ranking.push({
+        id: $(draggable).attr("data-id"),
+        name: $(draggable).attr("data-name"),
+      });
     });
   console.log("voteInPoll", id, username, ranking);
 
