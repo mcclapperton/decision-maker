@@ -97,10 +97,11 @@ createSubmission = function (id, username, ranking) {
   return $.post("/api/poll/submit", data)
     .done((result) => {
       console.log("This is the result:", result);
-      // The response will be just a message:
-      // {
-      //    "message": "Your answer has been submitted successfully."
-      // }
+      $("body").append(`
+      <div class="alert alert-success" role="alert">
+      <p>Your answer has been submitted successfully</p>
+    </div>
+      `);
       return result;
     })
     .fail((err) => {
