@@ -69,6 +69,7 @@ $(() => {
 const voteInPoll = function (event) {
   event.preventDefault();
   console.log("voteInPoll");
+  console.log("this is resp:", result);
   // response:{
   // id
   // username
