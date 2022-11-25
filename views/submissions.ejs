@@ -40,8 +40,8 @@
 </header>
 
 <body>
-  <form class="form-control">
-    <input type="hidden" name="pollId" value="<%= id %>">
+  <form id="submission-form" class="form-control">
+    <input type="hidden" id="pollId" name="pollId" value="<%= id %>">
     <h2>
       <%= title %>
     </h2>
@@ -50,8 +50,8 @@
     </h3>
     <div class="container">
 
-      <% for(let option of options) { %>
-        <p class="draggable" draggable="true">
+      <% for(let option of options) {%>
+        <p class="draggable" draggable="true" data-id="<%= option.id %>" data-name="<%= option.name %>">
           <%= option.name %>
         </p>
         <% } %>

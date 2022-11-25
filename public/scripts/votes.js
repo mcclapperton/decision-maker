@@ -2,7 +2,7 @@
 $(() => {
   console.log("READY");
 
-  $(".vote_button").on("submit", voteInPoll);
+  $("#submission-form").on("submit", voteInPoll);
 
   const draggables = document.querySelectorAll(".draggable");
   const containers = document.querySelectorAll(".container");
@@ -74,12 +74,13 @@ const voteInPoll = function (event) {
   // username
   // ranking [{id:, name:},{id:, name:} ]
   // }
-  let username = $("#username").val();
+  let id = $("#pollId").val();
+  let username = $(".username").val();
   const ranking = [];
   $(".draggable")
     .toArray()
     .forEach((draggable) => {
-      ranking.push({ id: $(id).val(), name: $(name).val() });
+      ranking.push({ id: $(draggable).attr("data-id"), name: $(draggable).attr("data-name")});
     });
   console.log("voteInPoll", id, username, ranking);
 
