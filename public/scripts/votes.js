@@ -68,13 +68,6 @@ $(() => {
 // send array of options IN RANKED ORDER
 const voteInPoll = function (event) {
   event.preventDefault();
-  console.log("voteInPoll");
-  // console.log("this is resp:", result);
-  // response:{
-  // id
-  // username
-  // ranking [{id:, name:},{id:, name:} ]
-  // }
   let id = $("#pollId").val();
   let username = $(".username").val();
   const ranking = [];
@@ -86,8 +79,6 @@ const voteInPoll = function (event) {
         name: $(draggable).attr("data-name"),
       });
     });
-  console.log("voteInPoll", id, username, ranking);
-
   createSubmission(id, username, ranking);
 };
 
@@ -97,7 +88,6 @@ createSubmission = function (id, username, ranking) {
     username,
     ranking,
   };
-  console.log("this is data:", data);
 
   return $.post("/api/poll/submit", data)
     .done((result) => {
