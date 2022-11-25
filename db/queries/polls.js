@@ -55,7 +55,7 @@ const createPoll = (poll) => {
       emailSender.sendEmail(
         poll.email,
         "Decision Maker App",
-        `Congrats! You just created a poll with the question: ${createdPoll.title}. Here there is the administrative link : http://localhost:8080${administrativeLink} and the submission link to share with your friends: http://localhost:8080${submissionLink}.`
+        `Congrats! You just created a poll with the question: ${createdPoll.title}. Here there is the administrative link : http://localhost:8080${administrativeLink} and the submission link to share with your friends: http://localhost:8080${submissionLink} `
       );
       return result;
     })
