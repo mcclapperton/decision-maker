@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/header.css" />
   <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,32 +39,27 @@
 </header>
 
 <body>
-  <form class="form-inline" action="/vote/new" method="POST" id="pollForm">
+  <form class="form-control">
     <input type="hidden" name="pollId" value="<%= id %>">
-    <div class="container">
-
+    <h2>
       <%= title %>
-        </h2>
-        <h3>
-          <%= description %>
-        </h3>
-        <ol id="<%=id%>">
-          <% for(let option of options) { %>
-            <li>
-              <input class="vote" type="radio" id="<%= id %>" name="selector">
-              <label for="<%= option.name %>">
-                <%= option.name %>
-              </label>
-              <div class="check">
-                <div class="inside"></div>
-              </div>
-              <!-- <output name="rank" for="<%= option %>"></output> -->
-            </li>
-            <% } %>
-        </ol>
-        <div>
-          <button class="vote_button" type="submit">VOTE</button>
-        </div>
+    </h2>
+    <h3>
+      <%= description %>
+    </h3>
+    <div class="container">
+      <% for(let option of options) { %>
+        <p class="draggable" draggable="true">
+          <%= option.name %>
+        </p>
+        <% } %>
+    </div>
+    <div id="username" class="form-group">
+      <label name="username">Enter your name:</label>
+      <input class="form-control username" type="text" />
+    </div>
+    <div>
+      <button class="vote_button" type="submit">VOTE</button>
     </div>
   </form>
 </body>
