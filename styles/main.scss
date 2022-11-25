@@ -1,12 +1,26 @@
 @import 'variables';
 
-.main {
-  display: $display;
+main {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: yellow(241, 241, 241);
   margin: 20px;
+
+  #poll-form {
+    margin: 0 20%;
+
+    .add-email-form {
+      margin-top: 3em;
+    }
+
+    .submit-button {
+      margin-top: 1em;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
 }
 
 
