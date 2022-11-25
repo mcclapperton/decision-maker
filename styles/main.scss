@@ -23,4 +23,17 @@ main {
   }
 }
 
+.results-main {
+  .results-title {
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Bungee', cursive;
+
+    h1 {
+      color: #4164c3
+    }
+  }
+}
+
+
 
