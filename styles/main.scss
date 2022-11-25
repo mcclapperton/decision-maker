@@ -23,19 +23,4 @@ main {
   }
 }
 
-.container {
-  background-color: $primary-colour;
-  padding: 1rem;
-  margin: 1rem;
-}
 
-.draggable {
-  padding: 1rem;
-  background-color: $secondary-colour;
-  border: 1px, solid $tertiary-colour;
-  cursor: move;
-}
-
-.draggable.dragging{
-  opacity: 0.5;
-}
