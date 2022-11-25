@@ -24,46 +24,51 @@
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,600;1,300&display=swap" rel="stylesheet">
 
   <!-- Local scripts -->
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/votes.js"></script>
 
 </head>
-<nav class="nav-bar">
-  <h1 class="header">Decision Maker</h1>
-</nav>
-<header>
-  <div class="header">
-    <h1>Vote!</h1>
-  </div>
-</header>
 
 <body>
-  <form id="submission-form" class="form-control">
-    <input type="hidden" id="pollId" name="pollId" value="<%= id %>">
-    <h2>
-      <%= title %>
-    </h2>
-    <h3>
-      <%= description %>
-    </h3>
-    <div class="container">
+  <nav class="nav-bar">
+    <h1 class="nav-title">Decision Maker</h1>
+  </nav>
 
-      <% for(let option of options) {%>
-        <p class="draggable" draggable="true" data-id="<%= option.id %>" data-name="<%= option.name %>">
-          <%= option.name %>
-        </p>
-        <% } %>
+  <main class="submission-main">
+    <div class="submission-title">
+      <h1>Vote</h1>
     </div>
-    <div id="username" class="form-group">
-      <label name="username">Enter your name:</label>
-      <input class="form-control username" type="text" />
-    </div>
-    <div>
-      <button class="vote_button" type="submit">VOTE</button>
-    </div>
-  </form>
+    <form id="submission-form" class="form-control">
+      <input type="hidden" id="pollId" name="pollId" value="<%= id %>">
+      <div class="question-title">
+        <blockquote class="blockquote">
+          <p class="mb-0">
+            <%= title %>
+          </p>
+          <footer class="blockquote-footer">
+            <%= description %>
+          </footer>
+        </blockquote>
+      </div>
+      <div class="container">
+        <% for (let option of options) {%>
+          <p class="draggable" draggable="true" data-id="<%= option.id %>" data-name="<%= option.name %>">
+            <%= option.name %>
+          </p>
+          <% } %>
+      </div>
+      <div id="username" class="form-group">
+        <label name="username">Enter your name</label>
+        <input class="form-control username" type="text" placeholder="name" />
+        <div class="submission-submit-button">
+          <button class="btn btn-success" type="submit">VOTE</button>
+        </div>
+      </div>
+    </form>
+  </main>
 </body>
 
 </html>

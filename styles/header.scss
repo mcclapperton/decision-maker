@@ -1,9 +1,9 @@
 @import 'variables';
-.header {
+.nav-title{
 display: flex;
-color: rgb(72, 66, 66);
-background-color: rgb(205, 150, 196);
-background-image: url(https://www.transparenttextures.com/patterns/light-wool.png);
+color: rgb(55, 54, 34);
+// background-color: rgb(205, 150, 196);
+// background-image: url(https://www.transparenttextures.com/patterns/light-wool.png);
 height: 13vw;
 width: 100%;
 z-index: 100;
@@ -11,7 +11,7 @@ padding-left: 1em;
 position: relative;
 top: 0.1em;
 }
-.tittle {
+.title {
   color: rgb(9, 10, 10);
 }
 
