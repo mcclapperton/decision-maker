@@ -5,9 +5,9 @@
   <title>Show Poll</title>
 
   <!-- Meta -->
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Local CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
@@ -23,7 +23,7 @@
   <!-- External CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <!-- Local scripts -->
   <script src="/vendor/jquery-3.0.0.js"></script>
@@ -40,8 +40,8 @@
 </header>
 
 <body>
-  <form class="form-control">
-    <input type="hidden" name="pollId" value="<%= id %>">
+  <form id="submission-form" class="form-control">
+    <input type="hidden" id="pollId" name="pollId" value="<%= id %>">
     <h2>
       <%= title %>
     </h2>
@@ -50,8 +50,8 @@
     </h3>
     <div class="container">
 
-      <% for(let option of options) { %>
-        <p class="draggable" draggable="true">
+      <% for(let option of options) {%>
+        <p class="draggable" draggable="true" data-id="<%= option.id %>" data-name="<%= option.name %>">
           <%= option.name %>
         </p>
         <% } %>

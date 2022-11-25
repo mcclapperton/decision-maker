@@ -2,7 +2,7 @@
 $(() => {
   console.log("READY");
 
-  $(".vote_button").on("submit", voteInPoll);
+  $("#submission-form").on("submit", voteInPoll);
 
   const draggables = document.querySelectorAll(".draggable");
   const containers = document.querySelectorAll(".container");
@@ -69,17 +69,22 @@ $(() => {
 const voteInPoll = function (event) {
   event.preventDefault();
   console.log("voteInPoll");
+  console.log("this is resp:", result);
   // response:{
   // id
   // username
   // ranking [{id:, name:},{id:, name:} ]
   // }
-  let username = $("#username").val();
+  let id = $("#pollId").val();
+  let username = $(".username").val();
   const ranking = [];
   $(".draggable")
     .toArray()
     .forEach((draggable) => {
-      ranking.push({ id: $(id).val(), name: $(name).val() });
+      ranking.push({
+        id: $(draggable).attr("data-id"),
+        name: $(draggable).attr("data-name"),
+      });
     });
   console.log("voteInPoll", id, username, ranking);
 
@@ -97,10 +102,11 @@ createSubmission = function (id, username, ranking) {
   return $.post("/api/poll/submit", data)
     .done((result) => {
       console.log("This is the result:", result);
-      // The response will be just a message:
-      // {
-      //    "message": "Your answer has been submitted successfully."
-      // }
+      $("body").append(`
+      <div class="alert alert-success" role="alert">
+      <p>Your answer has been submitted successfully</p>
+    </div>
+      `);
       return result;
     })
     .fail((err) => {
