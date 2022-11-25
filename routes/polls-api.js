@@ -32,8 +32,10 @@ router.get("/page/:pollId", (req, res) => {
       }
 
       poll = Object.assign(poll, { options });
+      console.log(poll);
+      // res.json(poll);
 
-      res.json(poll);
+      res.render("submissions", poll);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
@@ -56,7 +58,9 @@ router.get("/results/:pollId", (req, res) => {
   pollQueries
     .getPollResults(req.params.pollId)
     .then((polls) => {
-      console.log(polls);
+      if (Object.keys(polls).length === 0) {
+        res.json({ message: "No answers were submitted yet." });
+      }
       let poll = Object.assign(
         {},
         { title: polls[0].title, description: polls[0].description }

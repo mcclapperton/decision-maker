@@ -1,10 +1,6 @@
 const defaults = require("pg/lib/defaults");
 const db = require("../connection");
-
-// question,
-// description,
-// options,
-// email,
+const emailSender = require("../../utils/emailSender");
 
 const createPoll = (poll) => {
   const pollParams = [poll.title, poll.description, poll.email];
@@ -28,8 +24,8 @@ const createPoll = (poll) => {
           });
       }
 
-      const administrativeLink = `/polls/results/${createdPoll.id}`;
-      const submissionLink = `/polls/page/${createdPoll.id}`;
+      const administrativeLink = `/api/poll/results/${createdPoll.id}`;
+      const submissionLink = `/api/poll/page/${createdPoll.id}`;
 
       const updateQuery = `UPDATE polls set administrativeLink = $1, submissionLink = $2 where id = $3;`;
 
@@ -54,6 +50,12 @@ const createPoll = (poll) => {
           administrativeLink,
           submissionLink,
         }
+      );
+
+      emailSender.sendEmail(
+        poll.email,
+        "Decision Maker App",
+        `Congrats! You just created a poll with the question: ${createdPoll.title}. Here there is the administrative link : http://localhost:8080${administrativeLink} and the submission link to share with your friends: http://localhost:8080${submissionLink}.`
       );
       return result;
     })
@@ -90,6 +92,19 @@ const submitPoll = (poll) => {
       .then((res) => console.log(res.rows))
       .catch((e) => console.error(e.stack));
   }
+  db.query(
+    "SELECT title, email, administrativelink from polls where id = $1;",
+    [poll.id]
+  )
+    .then((res) => {
+      emailSender.sendEmail(
+        res.rows[0].email,
+        "Decision Maker App",
+        `The user ${poll.username} just submitted an answer to your poll "${res.rows[0].title}". Check the results here: http://localhost:8080${res.rows[0].administrativelink}`
+      );
+    })
+    .catch((e) => console.error(e.stack));
+
   return new Promise((resolve, reject) => {
     resolve({});
   });

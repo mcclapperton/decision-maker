@@ -38,37 +38,47 @@
     <form id="poll-form">
       <div class="form-group"></div>
       <section class="create-poll-form">
-        <label name="question">Ask your question: </label>
-        <input class="form-control" id="question" name="question" type="text" placeholder="Question" autocomplete="off">
+        <div class="form-group">
+          <label name="question">Ask your question: </label>
+          <input class="form-control" id="question" name="question" type="text" placeholder="Question"
+            autocomplete="off">
+          <small id="questionHelp" class="form-text text-muted">What would you like to ask?</small>
         </div>
 
         <div class="form-group">
           <label name="description">Description: </label>
           <input class="form-control" id="description" name="description" type="text" placeholder="Description"
             autocomplete="off">
+          <small id="descriptionHelp" class="form-text text-muted">Provide some brief description to your
+            question</small>
         </div>
 
         <div class="form-group">
           <label name="option">Enter your options:</label>
-          <input class="form-control option" id="option1" name="option1" type="text" />
+          <input class="form-control option" id="option1" name="option1" type="text" placeholder="Option 1" />
         </div>
         <div class="form-group">
-          <input class="form-control option" type="text" />
+          <input class="form-control option" type="text" placeholder="Option 2" />
         </div>
         <div class="form-group">
-          <input class="form-control option" type="text" />
+          <input class="form-control option" type="text" placeholder="Option 3" />
         </div>
 
         <div class="add-option-div">
           <button type="button" class="add-option btn btn-default btn-xs">Add another option</button>
         </div>
       </section>
-      <div class="form-group">
-        <label for="email">Enter your email:</label>
-        <input class="form-control" id="email" name="email" type="email" placeholder="Email address" autocomplete="off">
-      </div>
 
-      <div class="form-group">
+      <section class="add-email-form">
+        <div class="form-group">
+          <label for="email">Enter your email:</label>
+          <input class="form-control" id="email" name="email" type="email" placeholder="Email address"
+            autocomplete="off">
+        </div>
+      </section>
+
+
+      <div class="submit-button">
         <button type="submit" class="btn btn-success">Make a decision</button>
       </div>
     </form>
